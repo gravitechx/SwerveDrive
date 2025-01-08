@@ -56,30 +56,10 @@ public class RobotContainer {
   private final Joystick controller = new Joystick(Constants.OI.controllerPort);
   private final Joystick buttons = new Joystick(Constants.OI.buttonPanelPort);
 
-  private final JoystickButton testNormalButton = new JoystickButton(buttons, Constants.OI.testNormalButton);
-  private final JoystickButton testReverseButton = new JoystickButton(buttons, Constants.OI.testReverseButton);
-  private final JoystickButton rightClimberUpButtonPanel = new JoystickButton(buttons, Constants.OI.rightClimberUpButtonPanel);
-  private final JoystickButton rightClimberDownButtonPanel = new JoystickButton(buttons, Constants.OI.rightClimberDownButtonPanel);
-  private final JoystickButton leftClimberUpButtonPanel = new JoystickButton(buttons, Constants.OI.leftClimberUpButtonPanel);
-  private final JoystickButton leftClimberDownButtonPanel = new JoystickButton(buttons, Constants.OI.leftClimberDownButtonPanel);
- 
+  
   private final JoystickButton zeroGyro = new JoystickButton(controller, Constants.OI.resetGyro);
  
-  private final JoystickButton intakeButton = new JoystickButton(controller, Constants.OI.intakeButton);
-  private final JoystickButton feedButton = new JoystickButton(controller, Constants.OI.feedButton);
-  private final JoystickButton shootButton = new JoystickButton(controller, Constants.OI.shootButton);
-  private final JoystickButton rightClimberUpButton = new JoystickButton(controller, Constants.OI.leftClimberUpButton);
-  private final JoystickButton rightClimberDownButton = new JoystickButton(controller, Constants.OI.leftClimberDownButton);
-  private final JoystickButton leftClimberUpButton = new JoystickButton(controller, Constants.OI.rightClimberUpButton);
-  private final JoystickButton leftClimberDownButton = new JoystickButton(controller, Constants.OI.rightClimberDownButton);
-
-  private final JoystickButton increaseM1Button = new JoystickButton(buttons, 7);
-  private final JoystickButton decreaseM1Button = new JoystickButton(buttons, 8);
-  private final JoystickButton increaseM2Button = new JoystickButton(buttons, 9);
-  private final JoystickButton decreaseM2Button = new JoystickButton(buttons, 10);
-  private final JoystickButton shootOverRobotButton= new JoystickButton(controller, 5);
   
-  private final JoystickButton reverseFeedButton = new JoystickButton(controller, Constants.OI.reverseFeed);
   
   private final Trigger trigger = new Trigger(() -> controller.getRawAxis(3) == 1);
   private final Trigger trigger2 = new Trigger(() -> controller.getRawAxis(3) == -1);
@@ -109,79 +89,16 @@ public class RobotContainer {
   }
 
   private void configureAutoCommands() {
-    // NamedCommands.registerCommand("Intake", new InstantCommand(() -> intake.spin(1)));
-    // NamedCommands.registerCommand("StopIntake", new InstantCommand(() -> intake.spin(0)));
-    // NamedCommands.registerCommand("Shoot", new InstantCommand(() -> shooter.spinOnly(.9, .9)));
-    // NamedCommands.registerCommand("StopShoot", new InstantCommand(() -> shooter.spinOnly(0, 0)));
-    // NamedCommands.registerCommand("Feed", new InstantCommand(() -> feed.spin(.7, intake)));
-    // NamedCommands.registerCommand("StopFeed", new InstantCommand(() -> feed.spin(0, intake)));
-    // NamedCommands.registerCommand("OnlyFeed", new InstantCommand(() -> feed.spinOnly(.7)));
-    // NamedCommands.registerCommand("StopOnlyFeed", new InstantCommand(() -> feed.spinOnly(0)));
-    // NamedCommands.registerCommand("Prep", new InstantCommand(() -> Constants.primeShooter = true));
-    // NamedCommands.registerCommand("StopPrep", new InstantCommand(() -> Constants.primeShooter = false));
+    //
     NamedCommands.registerCommand("FlipGyro", new InstantCommand(() -> s_Swerve.flipZeroGyro()));
   }
 
   private void configureBindings() {
-    // shootButton.onFalse(new InstantCommand(() -> shooter.spinOnly(.08, .35))); // speed:.06, speed3: 0.31
-
-    // shootOverRobotButton.onTrue(new InstantCommand(() ->shooter.spinOnly(.98,.32)));
-    // shootOverRobotButton.onFalse(new InstantCommand(() ->shooter.spinOnly(0.06,0.31)));
-
-    // reverseFeedButton.onTrue(new InstantCommand(() -> feed.spin(-.5, intake)));
-    // reverseFeedButton.onFalse(new InstantCommand(() -> feed.spin(0, intake)));
-    // reverseFeedButton.onTrue(new InstantCommand(() -> shooter.spinOnly(-.5, -.5)));
-    // reverseFeedButton.onFalse(new InstantCommand(() -> shooter.spinOnly(.08, .35)));
-
-    // intakeButton.onTrue(new InstantCommand(() -> intake.spin(1)));
-    // intakeButton.onFalse(new InstantCommand(() -> intake.spin(0)));
-    // feedButton.onTrue(new InstantCommand(() -> feed.spin(.3, intake)));
-    // feedButton.onFalse(new InstantCommand(() -> feed.spin(0, intake)));
-
-    // shootButton.onTrue(new InstantCommand(() -> shooter.spinOnly(motor1Speed, motor2Speed)));
-
-    // leftClimberUpButton.onTrue(new InstantCommand(() -> climber.spinLeft(1)));
-    // leftClimberDownButton.onTrue(new InstantCommand(() -> climber.spinLeft(-1)));
-    // rightClimberUpButton.onTrue(new InstantCommand(() -> climber.spinRight(1)));
-    // rightClimberDownButton.onTrue(new InstantCommand(() -> climber.spinRight(-1)));
-    // leftClimberUpButton.onFalse(new InstantCommand(() -> climber.spinLeft(0)));
-    // leftClimberDownButton.onFalse(new InstantCommand(() -> climber.spinLeft(0)));
-    // rightClimberUpButton.onFalse(new InstantCommand(() -> climber.spinRight(0)));
-    // rightClimberDownButton.onFalse(new InstantCommand(() -> climber.spinRight(0)));
-
-    // trigger.onTrue(new InstantCommand(() -> Lights.setColor(255, 0, 0)));
-    // trigger.onFalse(new InstantCommand(() -> Lights.setColor(0, 0, 255)));
-    // trigger2.onTrue(new InstantCommand(() -> Lights.setColor(0, 255, 0)));
-    // trigger2.onFalse(new InstantCommand(() -> Lights.setColor(0, 0, 255)));
-
-    // // intakeButton.onTrue(new InstantCommand(() -> Lights.setColor(255, 0, 0)));
-    // feedButton.onFalse(new InstantCommand(() -> Lights.setColor(255, 0, 0)));
-    // // shootButton.onTrue(new InstantCommand(() -> Lights.setColor(0, 0, 255)));
+    
 
     zeroGyro.onTrue(new InstantCommand(() -> s_Swerve.zeroGyro()));
  
-    increaseM1Button.onTrue(new InstantCommand(() -> motor1Speed += .01));
-    increaseM1Button.onFalse(new InstantCommand(() -> SmartDashboard.putNumber("m1Speed", motor1Speed)));
-    decreaseM1Button.onTrue(new InstantCommand(() -> motor1Speed -= .01));
-    decreaseM1Button.onFalse(new InstantCommand(() -> SmartDashboard.putNumber("m1Speed", motor1Speed)));
-    increaseM2Button.onTrue(new InstantCommand(() -> motor2Speed += .01));
-    increaseM2Button.onFalse(new InstantCommand(() -> SmartDashboard.putNumber("m2Speed", motor2Speed)));
-    decreaseM2Button.onTrue(new InstantCommand(() -> motor2Speed -= .01));
-    decreaseM2Button.onFalse(new InstantCommand(() -> SmartDashboard.putNumber("m2Speed", motor2Speed)));
-
-    // testNormalButton.onTrue(new InstantCommand(() -> shooter.spin(1, 1, feed, intake)));
-    // testNormalButton.onFalse(new InstantCommand(() -> shooter.spin(0, 0, feed, intake)));
-    // testReverseButton.onTrue(new InstantCommand(() -> shooter.spin(-1, -1, feed, intake)));
-    // testReverseButton.onFalse(new InstantCommand(() -> shooter.spin(0, 0, feed, intake)));
-
-    // rightClimberUpButtonPanel.onTrue(new InstantCommand(() -> climber.spinRight(-1)));
-    // rightClimberDownButtonPanel.onTrue(new InstantCommand(() -> climber.spinRight(1)));
-    // leftClimberUpButtonPanel.onTrue(new InstantCommand(() -> climber.spinLeft(1)));
-    // leftClimberDownButtonPanel.onTrue(new InstantCommand(() -> climber.spinLeft(-1)));
-    // rightClimberUpButtonPanel.onFalse(new InstantCommand(() -> climber.spinRight(0)));
-    // rightClimberDownButtonPanel.onFalse(new InstantCommand(() -> climber.spinRight(0)));
-    // leftClimberUpButtonPanel.onFalse(new InstantCommand(() -> climber.spinLeft(0)));
-    // leftClimberDownButtonPanel.onFalse(new InstantCommand(() -> climber.spinLeft(0)));
+    
   }
 
   /**

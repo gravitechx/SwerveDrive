@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.Swerve;
+import com.ctre.phoenix6.configs.MagnetSensorConfigs;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -21,7 +22,9 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   private RobotContainer m_robotContainer;
+  public MagnetSensorConfigs offsetter;
   public static CTREConfigs ctreConfigs = new CTREConfigs();
+  
   //public static AutoPicker autoPicker;
 
 
@@ -31,6 +34,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
+    // offsetter = offsetter.withMagnetOffset(0);
     CameraServer.startAutomaticCapture();
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
@@ -81,6 +85,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopInit() {
     Constants.state = 2;
+    
     // This makes sure that the autonomous stops running when
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
@@ -93,7 +98,7 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    SmartDashboard.putBoolean("Is it programming's fault?", true);
+    SmartDashboard.putBoolean("Is it mechaical's fault?", true);
   }
 
   @Override

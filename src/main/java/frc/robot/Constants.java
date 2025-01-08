@@ -52,72 +52,17 @@ public final class Constants {
     public static final int controllerPort = (driver == "Justin") ? 0 : 2;
     public static final int buttonPanelPort = 1;
 
-    public static final int testNormalButton = 1;
-    public static final int testReverseButton = 2;
-    public static final int rightClimberUpButtonPanel = 5;
-    public static final int rightClimberDownButtonPanel = 6;
-    public static final int leftClimberUpButtonPanel = 3;
-    public static final int leftClimberDownButtonPanel = 4;
-
     public static final int translationAxis = (driver == "Justin") ? 1 : 1;
     public static final int strafeAxis = (driver == "Justin") ? 0 : 0;
     public static final int rotationAxis = (driver == "Justin") ? 2 : 4;
 
-    public static final int longShotButton = (driver == "Justin") ? 30 : 2;
-    public static final boolean dummy = true;
-   
-    public static final int shotButton = (driver == "Justin") ? 30 : 3;
-
-    public static final int intakeButton = (driver == "Justin") ? 4 : 6; // 1
-    public static final int feedButton = (driver == "Justin") ? 2 : 5; // 5
-    public static final int shootButton = (driver == "Justin") ? 1 : 1; // 2
-    public static final int shootSlowButton = (driver == "Justin") ? 4 : 4;
-    public static final int leftClimberUpButton = (driver == "Justin") ? 7 : 3;
-    public static final int leftClimberDownButton = (driver == "Justin") ? 9 : 4;
-    public static final int rightClimberUpButton = (driver == "Justin") ? 8 : 1;
-    public static final int rightClimberDownButton = (driver == "Justin") ? 10 : 2;
-    public static final int primeShooterButton = 20; // 3
-    public static final int bothClimberUpButton = 20; //Make it an acutal button
-    public static final int bothClimberDownButton = 20; //Make this an actual button
-    // public static final int increaseTopSpeed = 6;
-    //public static final int decreaseTopSpeed = 4;
-    public static final int POVNorth = 0;
-    public static final int POVSouth = 180;
-    public static final int POVEast = 90;
-    public static final int POVWest = 270;
-    public static final int reverseFeed = (driver == "Justin") ? 12 : 12;
+    
     public static final int resetGyro = (driver == "Justin") ? 11 : 11;
 
     //public static final int musicStartButton = 7;
     //public static final int musicStopButton = 8;
   }
 
-  public static final class Lights {
-    public static final int port = 9;
-    public static final int length = 120;
-  }
-
-  public static final class Shooter {
-    public static final int kMotorPortTop = 3; //NOT FINAL
-    public static final int kMotorPortBottom = 2; //NOT FINAL
-  }
-
-  public static final class Intake {
-    public static final int motorPort = 1;//NOT FINAL
-    public static final int sensorPort = 0;
-    public static final int sensorPort1 = 1;
-  }
-
-  public static final class Feeder {
-    public static final int leftMotorPort = 4; //NOT FINAL
-    public static final int rightMotorPort = 6; //NOT FINAL
-    public static final int sensorPort = 1;
-  }
-
-  public static final class Climber {
-    public static final int motorPort1 = 9;
-    public static final int motorPort2 = 10;
-  }
 
   public static final class Swerve {
     public static final boolean invertGyro = true; // Always ensure Gyro is CCW+ CW-
@@ -203,9 +148,10 @@ public final class Constants {
             public static final int driveMotorID = 7; //7
             public static final int angleMotorID = 8;
             public static final int canCoderID = 4;
-            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(0); // 177.978
+            // public static final Rotation2d angleOffset = Rotation2d.fromDegrees(0); // 177.978
+            public static final double rotationOffset = 0.038086;
             public static final SwerveModuleConstants constants = 
-                new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
+                new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, rotationOffset, CTREConfigs.swerveCANcoderConfig);
         }
 
         /* Front Right Module - Module 1 */
@@ -213,9 +159,11 @@ public final class Constants {
             public static final int driveMotorID = 1;
             public static final int angleMotorID = 2;
             public static final int canCoderID = 1;
-            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(-0.232910*360); // 101.898
+            // public static final Rotation2d angleOffset = Rotation2d.fromDegrees(-0.232910*360); // 101.898
+            public static final double rotationOffset = 0.245605;
             public static final SwerveModuleConstants constants = 
-                new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
+                new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, rotationOffset, CTREConfigs.swerveCANcoderConfig);
+            public static final double magneticAngleOffset = 0; 
         }
         
         /* Back Left Module - Module 2 */
@@ -223,9 +171,10 @@ public final class Constants {
             public static final int driveMotorID = 5;
             public static final int angleMotorID = 6;
             public static final int canCoderID = 3;
-            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(0); // 101.25
+            // public static final Rotation2d angleOffset = Rotation2d.fromDegrees(0); // 101.25
+            public static final double rotationOffset = 0.328613;
             public static final SwerveModuleConstants constants = 
-                new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
+                new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID,  rotationOffset, CTREConfigs.swerveCANcoderConfig);
         }
 
         /* Back Right Module - Module 3 */
@@ -233,9 +182,10 @@ public final class Constants {
             public static final int driveMotorID = 3;
             public static final int angleMotorID = 4;
             public static final int canCoderID = 2;
-            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(0); // 151.171
+            // public static final Rotation2d angleOffset = Rotation2d.fromDegrees(0); // 151.171
+            public static final double rotationOffset = 0.034424;
             public static final SwerveModuleConstants constants = 
-                new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
+                new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID,  rotationOffset, CTREConfigs.swerveCANcoderConfig);
         }
     }
 

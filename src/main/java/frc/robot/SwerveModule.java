@@ -25,7 +25,7 @@ import com.ctre.phoenix6.hardware.CANcoder;
 
 public class SwerveModule {
     public int moduleNumber;
-    private Rotation2d angleOffset;
+    // private Rotation2d angleOffset;
     private Rotation2d lastAngle;
 
     private TalonFX mAngleMotor;
@@ -41,11 +41,13 @@ public class SwerveModule {
 
     public SwerveModule(int moduleNumber, SwerveModuleConstants moduleConstants, Swerve swerve){
         this.moduleNumber = moduleNumber;
-        this.angleOffset = moduleConstants.angleOffset;
+        // this.angleOffset = moduleConstants.angleOffset;
         
         /* Angle Encoder Config */
         angleEncoder = new CANcoder(moduleConstants.cancoderID);
         angleEncoder.getConfigurator().apply(Robot.ctreConfigs.swerveCANcoderConfig);
+        
+        
         // configAngleEncoder();
 
         /* Angle Motor Config */
@@ -110,8 +112,8 @@ public class SwerveModule {
     }
 
     public void resetToAbsolute(){
-        double absolutePosition = getCanCoder().getRotations() - angleOffset.getRotations();
-        mAngleMotor.setPosition(0);
+        double absolutePosition = getCanCoder().getRotations(); //  - angleOffset.getRotations();
+        mAngleMotor.setPosition(-absolutePosition);
 
         // double absolutePosition = Conversions.degreesToFalcon(getCanCoder().getDegrees() - angleOffset.getDegrees(), Constants.Swerve.angleGearRatio);
         // mAngleMotor.setSelectedSensorPosition(absolutePosition);
